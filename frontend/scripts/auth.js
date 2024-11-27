@@ -22,7 +22,7 @@ function setupLoginPage() {
             const loginData = { username, password };
 
             try {
-                const response = await fetch('tg-dispatch-ehbvhcbwcqgcabde.northeurope-01.azurewebsites.net/auth/login', {
+                const response = await fetch('https://tg-dispatch-ehbvhcbwcqgcabde.northeurope-01.azurewebsites.net/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(loginData),
