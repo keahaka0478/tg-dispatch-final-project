@@ -38,4 +38,23 @@ public class UserService {
             throw new RuntimeException("User not found");
         }
     }
+
+    public User updateUser(Long id, User user) {
+        User existingUser = userRepository.findById(id).orElse(null);
+        if (existingUser == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        if (user.getUsername() != null && !user.getUsername().isEmpty()) {
+            existingUser.setUsername(user.getUsername());
+        }
+        if (user.getRole() != null && !user.getRole().isEmpty()) {
+            existingUser.setRole(user.getRole());
+        }
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+
+        return userRepository.save(existingUser);
+    }
 }
