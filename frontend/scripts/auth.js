@@ -59,14 +59,6 @@ function protectPage() {
     if (!token || !role || !username) {
         window.location.href = 'index.html';
     }
-
-    const roleElement = document.getElementById('role');
-    const usernameElement = document.getElementById('username');
-
-    if (roleElement && usernameElement) {
-        roleElement.textContent = role;
-        usernameElement.textContent = username;
-    }
 }
 
 function setupLogout() {

@@ -6,28 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TG Dispatch - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <h1 class="text-center">TG Dispatch</h1>
-                <form id="login-form">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Brugernavn</label>
-                        <input type="text" id="username" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Adgangskode</label>
-                        <input type="password" id="password" class="form-control" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Log på</button>
-                </form>
-                <p id="error-message" class="text-danger mt-3 d-none">Invalid credentials</p>
-            </div>
+<body class="bg-light d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4 rounded-4" style="width: 100%; max-width: 400px;">
+        <div class="text-center mb-4">
+            <img src="https://tgrenovation.dk/CustomerData/Files/Images/Archive/1-grafik/logo_4.png"
+                alt="TG Renovation Logo" class="img-fluid" style="max-width: 100%; height: auto;">
         </div>
+        <form id="login-form">
+            <div class="mb-3">
+                <label for="username" class="form-label">Brugernavn</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" id="username" class="form-control" placeholder="Indtast dit brugernavn" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Adgangskode</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" id="password" class="form-control" placeholder="Indtast din adgangskode"
+                        required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success w-100 py-2">
+                <i class="bi bi-box-arrow-in-right"></i> Log på
+            </button>
+        </form>
+        <p id="error-message" class="text-danger mt-3 d-none">Forkert brugernavn eller adgangskode</p>
     </div>
+
     <script src="scripts/auth.js"></script>
 </body>
 

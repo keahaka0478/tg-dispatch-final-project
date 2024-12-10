@@ -117,15 +117,20 @@ async function updateUser(userId, editUserModal) {
 function handleDeleteClick(event) {
     const userId = event.target.dataset.id;
     const deleteConfirmationModal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+    const modalMessage = document.getElementById('delete-modal-message');
+    modalMessage.textContent = '';
+    modalMessage.style.color = '';
+
     deleteConfirmationModal.show();
 
     document.getElementById('confirm-delete').addEventListener('click', async function () {
-        const modalMessage = document.getElementById('delete-modal-message');
         try {
             const success = await deleteUser(userId);
+
             if (success) {
                 modalMessage.textContent = 'Bruger blev slettet.';
                 modalMessage.style.color = 'green';
+
                 setTimeout(() => {
                     deleteConfirmationModal.hide();
                     loadUsers();
