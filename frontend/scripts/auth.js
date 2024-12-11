@@ -55,11 +55,26 @@ function protectPage() {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
     const username = localStorage.getItem('username');
+    const currentPage = window.location.pathname.split('/').pop();
 
     if (!token || !role || !username) {
         window.location.href = 'index.html';
+        return;
+    }
+
+    if (currentPage === 'admin.html') {
+        if (role !== 'ADMIN') {
+            window.location.href = 'driver.html';
+            return;
+        }
+    } else if (currentPage === 'driver.html') {
+        if (role !== 'DRIVER') {
+            window.location.href = 'admin.html';
+            return;
+        }
     }
 }
+
 
 function setupLogout() {
     const logoutButton = document.getElementById('logout');

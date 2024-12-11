@@ -210,29 +210,3 @@ function displayMessage(message, color) {
         messageElement.classList.add('d-none');
     }, 3000);
 }
-
-function protectPage() {
-    const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role');
-    const username = localStorage.getItem('username');
-
-    if (!token || !role || !username) {
-        window.location.href = 'index.html';
-    }
-
-    const roleElement = document.getElementById('role');
-    const usernameElement = document.getElementById('username');
-
-    if (roleElement && usernameElement) {
-        roleElement.textContent = role;
-        usernameElement.textContent = username;
-    }
-}
-
-function setupLogout() {
-    const logoutButton = document.getElementById('logout');
-    logoutButton.addEventListener('click', function () {
-        localStorage.clear();
-        window.location.href = 'index.html';
-    });
-}
