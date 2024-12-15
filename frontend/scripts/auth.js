@@ -54,12 +54,18 @@ function setupLoginPage() {
 function protectPage() {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
-    const username = localStorage.getItem('username');
     const currentPage = window.location.pathname.split('/').pop();
 
-    if (!token || !role || !username) {
+    if (!token || !role) {
         window.location.href = 'index.html';
         return;
+    }
+
+    if (currentPage === 'customer.html') {
+        if (role !== 'ADMIN') {
+            window.location.href = 'driver.html';
+            return;
+        }
     }
 
     if (currentPage === 'admin.html') {
@@ -67,14 +73,15 @@ function protectPage() {
             window.location.href = 'driver.html';
             return;
         }
-    } else if (currentPage === 'driver.html') {
+    }
+
+    if (currentPage === 'driver.html') {
         if (role !== 'DRIVER') {
             window.location.href = 'admin.html';
             return;
         }
     }
 }
-
 
 function setupLogout() {
     const logoutButton = document.getElementById('logout');
